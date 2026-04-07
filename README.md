@@ -3,10 +3,12 @@
 This lab is designed for a team of five members to practice **GitHub Flow** while understanding alternative Git workflows. You will focus on **team governance**, **branch protection**, and **explicit merging** without fast-forwarding to maintain a clear audit trail.
 
 ## 1. Overview of Git Workflows
+
 Before starting, review these three primary workflows used in the industry:
-*   **GitHub Flow (Our Focus):** Ideal for agile teams and web applications. It relies on a single `main` branch that must always be in a deployable state. Feature branches are used for all changes.
-*   **Git Flow:** A more structured approach with multiple long-lived branches (`main`, `dev`, `release`, `feature`, and `bug`). It is ideal for installable applications (like mobile apps) where multiple versions run simultaneously.
-*   **Trunk-Based Development (TBD):** The current industry standard (2026) for large-scale SaaS. It uses direct commits to `main` or very short-lived feature branches (~4 hours) and relies on "feature flags" and bulletproof automated testing.
+
+* **GitHub Flow (Our Focus):** Ideal for agile teams and web applications. It relies on a single `main` branch that must always be in a deployable state. Feature branches are used for all changes.
+* **Git Flow:** A more structured approach with multiple long-lived branches (`main`, `dev`, `release`, `feature`, and `bug`). It is ideal for installable applications (like mobile apps) where multiple versions run simultaneously.
+* **Trunk-Based Development (TBD):** The current industry standard (2026) for large-scale SaaS. It uses direct commits to `main` or very short-lived feature branches (~4 hours) and relies on "feature flags" and bulletproof automated testing.
 
 ---
 
@@ -108,39 +110,47 @@ Push your branch to GitHub:
 git push origin feature/issue-number-description
 ```
 
-1. Go to GitHub and open a **Pull Request (PR)** from your branch to `main`.
-2. Assign a teammate to perform a **Code Review**.
+1. Go to GitHub and open a **Pull Request (PR)** from your branch to `main`. There should be a green button prompting you to "Compare & pull request" after pushing.
+2. Link the PR to the corresponding issue by including `#issue-number` in the PR description. This creates a connection between the changes and the issue it addresses.
+3. Assign a teammate to perform a **Code Review**. If this was your research/project, then your research supervisor would be the reviewer.
 
 ### Step D: The Code Review
 
-* **The Reviewer:** Check the code for clarity and accuracy based on the source material. Approve the PR if it meets requirements.
+* **The Reviewer:** Check the **Files changed** for clarity and accuracy based on the source material. Approve the PR if it meets requirements. If not, request changes and provide specific feedback in the comments.
 * **The Author:** Address any feedback provided during the review.
 
 ### Step E: Merging without Fast-Forward (`--no-ff`)
-Once approved, the merge must be performed. To ensure the process is visible for audit purposes, we will avoid "Fast-Forward" merging. 
 
-On your terminal (or via the GitHub UI "Merge" button, provided it is configured for merge commits):
+Once approved, the merge must be performed. To ensure the process is visible for audit purposes, we will avoid "Fast-Forward" merging.
+
+On your terminal:
+
 ```bash
 git checkout main
 git pull origin main
 git merge --no-ff feature/issue-number-description
 ```
-**Why `--no-ff`?** This option always creates a "merge commit," documenting the integration as a deliberate event in history. This is ideal in academic contexts so supervisors can see the branch evolution and your collaborative process.
+
+**Why `--no-ff`?** This option always creates a "merge commit," documenting the integration as a deliberate event in history. This is ideal in academic contexts so that research supervisors can see the branch evolution and your collaborative process. It also enables the lecturer to see the history of changes in a more structured way, which is beneficial for grading and feedback.
 
 ---
 
 ## 5. Handling Merge Conflicts (Member 5)
+
 By the time **Member 5** merges, the `main` branch will have moved forward significantly. If a conflict occurs:
-1.  Git will flag the files that have "natural" collaboration conflicts.
-2.  Open the file, choose the correct version (or combine them), and save.
-3.  Stage the resolved file: `git add <filename>`.
-4.  Complete the merge with `git commit`. 
+
+1. Git will flag the files that have "natural" collaboration conflicts.
+2. Open the file, choose the correct version (or combine them), and save your changes.
+3. Stage the resolved file: `git add <filename>`.
+4. Complete the merge with `git commit`.
 
 ---
 
 ## 6. Summary of Merging Techniques
+
 While we used **Git Merge (`--no-ff`)**, be aware of these alternatives:
-*   **Git Rebase:** Rewrites history by moving the base of your branch to the tip of `main`. It creates a clean, linear history but reduces traceability.
-*   **Squash Commits:** Combines all commits from a feature branch into one single commit on `main`. This is useful for cleaning up "messy" intermediate commits but discards individual commit details.
+
+* **Git Rebase:** Rewrites history by moving the base of your branch to the tip of `main`. It creates a clean, linear history but reduces traceability.
+* **Squash Commits:** Combines all commits from a feature branch into one single commit on `main`. This is useful for cleaning up "messy" intermediate commits but discards individual commit details.
 
 **Final Check:** Use `git log --oneline --graph` to view the repository history. You should see a series of "knots" representing the deliberate merge commits made by each team member.
