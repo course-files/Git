@@ -7,7 +7,7 @@
 
 ## 11. Moving Work Around (`git cherry-pick`)
 
-**Member 2** will simulate a common mistake: committing work to the **wrong branch**.
+**Member 2** is required to simulate a common mistake: committing work to the **wrong branch**.
 
 1. **The Mistake:** Imagine you accidentally committed an update directly in the `main` branch instead of through a `feature` branch.
 2. **Get the ID:** Find the **Commit ID (SHA value)** of the misplaced commit in the `main` branch.
