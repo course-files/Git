@@ -1,4 +1,4 @@
-# Lab: Mastering Collaborative Git Workflows
+# Collaborative Git Workflows: Part 1
 
 This lab is designed for a team of five members to practice **GitHub Flow** while understanding alternative Git workflows. You will focus on **team governance**, **branch protection**, and **explicit merging** without fast-forwarding to maintain a clear audit trail.
 
@@ -103,6 +103,12 @@ Create your assigned file and confirm that there is a modification ready to be c
 git status
 ```
 
+You can configure the default commit message editor to be **VS Code** for better formatting of the commit message body. Run the following command:
+
+```bash
+git config --global core.editor "code --wait"
+```
+
 Once ready, stage and commit it:
 
 ```bash
@@ -110,7 +116,39 @@ git add .
 git commit
 ```
 
-**Important:** Your commit message should include a subject line (< 72 characters) and a body explaining the academic value/reasoning of the change.
+**Important:** What constitutes an academically sound commit message?
+
+A commit message is a permanent, public record of **why** a change was made — not merely what changed (the diff already shows that). In an academic context, it serves the same function as a lab notebook entry: it must be comprehensible to a reader who has no prior context and who may be reviewing the work weeks later.
+Your `git commit` command (without the `-m` flag) will open a text editor. Structure your message as follows:
+
+```text
+<Verb in imperative mood> <concise description of the change> (≤72 characters)
+
+<Blank line — mandatory>
+
+Why this change was made:
+<One to three sentences explaining the academic or technical motivation.
+What problem does this address?
+What would happen without this change?>
+
+Related issue: #<issue-number>
+```
+
+Why the **imperative mood**? Git itself uses it — "Merge branch", "Revert commit", "Add file". Reading your message alongside Git's own messages should feel consistent. Write "Add feature" rather than "Added feature" or "Adding feature".
+
+Example:
+
+```text
+Add data_source.md listing primary BI source types
+
+This file documents the four primary data source categories used
+in Business Intelligence architectures: transactional databases,
+flat files, APIs, and streaming sources. It provides the foundational
+vocabulary required before students can assess warehouse design in
+subsequent tasks.
+
+Related issue: #2
+```
 
 ### Step C: Pushing and Pull Request
 
@@ -131,29 +169,99 @@ git push origin feature/issue-number-description
 
 ### Step E: Merging without Fast-Forward (`--no-ff`)
 
-Once approved, the merge must be performed. To ensure the process is visible for audit purposes, we will avoid "Fast-Forward" merging.
+Once approved, the merge must be performed. To ensure the process is visible for audit purposes, we will avoid "Fast-Forward" merging. Click the green "Merge pull request" on the GitHub web interface, then select "Create a merge commit" to ensure that the merge is explicitly recorded in the history. This should achieve the same result as running the following command in the terminal:
 
-In your terminal:
+```bash
+git merge --no-ff feature/issue-number-description
+```
+
+After successfully merging the pull request in the web browser, team members should pull the latest changes to their local `main` branch to stay up to date:
 
 ```bash
 git checkout main
 git pull origin main
-git merge --no-ff feature/issue-number-description
-git push origin main
 ```
 
 **Why `--no-ff`?** This option always creates a "merge commit," documenting the integration as a deliberate event in history. This is ideal in academic contexts so that research supervisors can see the branch evolution and your collaborative process. It also enables the lecturer to see the history of changes in a more structured way, which is beneficial for grading and feedback.
 
 ---
 
-## 8. Handling Merge Conflicts (Member 5)
+## 8. Handling Merge Conflicts (Member 1 and 5)
 
-By the time **Member 5** merges, the `main` branch will have moved forward significantly. If a conflict occurs:
+A merge conflict occurs when two branches have each made different changes to the same lines of the same file. Git cannot decide which version is correct, so it pauses and asks you to resolve it manually. This section engineers a guaranteed conflict so that every team member experiences the resolution process.
 
-1. Git will flag the files that have "natural" collaboration conflicts.
-2. Open the file, choose the correct version (or combine them), and save your changes.
-3. Stage the resolved file: `git add <filename>`.
-4. Complete the merge with `git commit`.
+**Setup** — creating the conflict (Members 1 and 5, working simultaneously).
+
+Both members must edit the same line in README.md before either has merged.
+Member 1 adds the following line to README.md on their feature branch and commits it:
+
+```bash
+echo "Project lead: Member 1 — responsible for overall coordination." >> README.md
+git add README.md
+git commit -m "Add project lead attribution to README"
+```
+
+Member 5 adds a different line at the exact same position on their own feature branch and commits it:
+
+```bash
+echo "Project lead: Member 5 — responsible for governance and audit." >> README.md
+git add README.md
+git commit -m "Add governance author attribution to README"
+```
+
+Member 1 merges first through the normal PR process. By the time Member 5 attempts to merge, main has moved forward and the two branches have diverged on the same line.
+
+### Resolution process (Member 5)
+
+Before opening a PR, Member 5 should update their local feature branch with the latest state of main:
+
+```bash
+git checkout feature/issue-5-governance
+git fetch origin
+git merge origin/main
+```
+
+Git will halt and report a conflict. The terminal output will resemble:
+
+```text
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts then commit the result.
+```
+
+Open README.md in your IDE (VS Code). Git marks the conflict zone as follows:
+
+```text
+<<<<<<< HEAD
+Project lead: Member 5 — responsible for governance and audit.
+=======
+Project lead: Member 1 — responsible for overall coordination.
+>>>>>>> origin/main
+```
+
+The section between **<<<<<<< HEAD** and **=======** is your version
+
+The section between **=======** and **>>>>>>> origin/main** is the version already on main. Member 5 must decide what the final file should say. In this case, both attributions are valid — combine them as follows:
+
+```text
+Project lead: Member 1 (coordination) and Member 5 (governance and audit).
+```
+
+Delete all three conflict markers (<<<<<<<, =======, >>>>>>>) and save the file.
+
+Stage the resolved file and complete the merge:
+
+```bash
+git add README.md
+git commit -m "Resolve merge conflict: consolidate dual attribution in README"
+```
+
+Member 5's branch now contains a clean merge commit. Proceed to push and open your PR as normal.
+
+**Key principle:** A conflict is not an error — it is Git asking a human to make a decision that a machine cannot. The discipline lies in reading both versions carefully before choosing, not in simply accepting one side and discarding the other.
+
+The quality of the resolution matters as much as the resolution itself. In a professional codebase, a careless conflict resolution that silently discards one team member's valid change is far more dangerous than the conflict itself, precisely because it leaves no trace.
+
+The actual discipline is to understand both sides of the conflict well enough to make an informed editorial decision.
 
 ---
 
@@ -171,6 +279,7 @@ While we used **Git Merge (`--no-ff`)**, be aware of these alternatives:
 **All Members** should practice viewing the "technical lab notes" of the project to ensure the process is transparent.
 
 * Go back to the main branch: `git checkout main`
+* Fetch the latest changes: `git pull origin main`
 * Confirm that the remote branch is up to date with the branch in the origin by running `git status`
 * Then run `git log --oneline --graph` to view the repository history. You should see a series of "knots" representing the deliberate merge commits made by each team member.
 
