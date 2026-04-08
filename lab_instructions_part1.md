@@ -171,6 +171,7 @@ While we used **Git Merge (`--no-ff`)**, be aware of these alternatives:
 **All Members** should practice viewing the "technical lab notes" of the project to ensure the process is transparent.
 
 * Go back to the main branch: `git checkout main`
+* Confirm that the remote branch is up to date with the branch in the origin by running `git status`
 * Then run `git log --oneline --graph` to view the repository history. You should see a series of "knots" representing the deliberate merge commits made by each team member.
 
 * **View a Graph of Merges:** To see how branches have evolved and joined, run:
