@@ -1,20 +1,26 @@
 # Part 2: Advanced Git Commands for Team Collaboration
 
+* Go back to the feature branch: `git checkout feature/issue-number-description`
+
 ## 11. Moving Work Around (`git cherry-pick`)
 
 **Member 2** will simulate a common mistake: committing work to the **wrong branch**.
 
-1.  **The Mistake:** Imagine you accidentally committed a "Data Cleaning" update to your `feature/issue-2` branch, but it actually belonged in a separate "Refactoring" branch.
-2.  **Get the ID:** Find the **Commit ID (SHA value)** of the misplaced commit using `git log --oneline`.
-3.  **Switch and Copy:**
+1. **The Mistake:** Imagine you accidentally committed a "Data Cleaning" update to your `feature/issue-number-description` branch, but it actually belonged in a separate "Refactoring" branch.
+2. **Get the ID:** Find the **Commit ID (SHA value)** of the misplaced commit using `git log --oneline`.
+3. **Switch and Copy:**
+
     ```bash
     git checkout -b feature/data-refactoring
     git cherry-pick <Commit-ID-from-Step-2>
     ```
+
     *Note: Git applies those changes to your current branch and creates a **new commit ID**, while the original commit remains on the old branch.*
-4.  **Clean up:** Switch back to the original branch and use `git reset` (see Section 9) to remove the duplicate commit from the wrong location.
+
+4. **Clean up:** Switch back to the original branch and use `git reset` (see Section 9) to remove the duplicate commit from the wrong location.
 
 ## 9. Reversing Changes (`git revert` vs. `git reset`)
+
 The team must distinguish between local "undos" and shared history corrections.
 
 ### A. Local Undo (`git reset`)

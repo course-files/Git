@@ -133,7 +133,7 @@ git push origin feature/issue-number-description
 
 Once approved, the merge must be performed. To ensure the process is visible for audit purposes, we will avoid "Fast-Forward" merging.
 
-On your terminal:
+In your terminal:
 
 ```bash
 git checkout main
@@ -170,7 +170,7 @@ While we used **Git Merge (`--no-ff`)**, be aware of these alternatives:
 
 **All Members** should practice viewing the "technical lab notes" of the project to ensure the process is transparent.
 
-* Go back to the main brach: `git checkout main`
+* Go back to the main branch: `git checkout main`
 * Then run `git log --oneline --graph` to view the repository history. You should see a series of "knots" representing the deliberate merge commits made by each team member.
 
 * **View a Graph of Merges:** To see how branches have evolved and joined, run:
