@@ -85,7 +85,9 @@ Each member must follow these steps for their respective issue. **Member 1** wil
 
 ### Step A: Branching
 
-On your local machine, create and switch to a new branch for your task:
+On your local machine, create and switch to a new branch for your task.
+
+*Note: The branch name should follow the format `feature/issue-number-description` to maintain clarity and consistency across the team. For example, if you are working on Issue #2, your branch name could be `feature/issue-2-data-source`. This naming convention helps everyone on the team quickly understand the purpose of the branch and its connection to the corresponding issue.*
 
 ```bash
 git checkout -b feature/issue-number-description
