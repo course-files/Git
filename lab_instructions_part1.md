@@ -2,6 +2,8 @@
 
 This lab is designed for a team of five members to practice **GitHub Flow** while understanding alternative Git workflows. You will focus on **team governance**, **branch protection**, and **explicit merging** without fast-forwarding to maintain a clear audit trail.
 
+---
+
 ## 1. Overview of Git Workflows
 
 Before starting, review these three primary workflows used in the industry:
@@ -38,6 +40,8 @@ Before starting, review these three primary workflows used in the industry:
 3. Ensure that your team members are added to the project as collaborators with **Admin** rights. This can be done in the project **Settings** > **Manage access**.
 4. Create iterations and specify the start and end dates for each iteration. This is available under the project **Settings** > **Iterations**.
 
+---
+
 ## 4. Create Milestones (Member 1)
 
 1. Go to the **Issues** tab and click on **Milestones**.
@@ -47,6 +51,8 @@ Before starting, review these three primary workflows used in the industry:
      * **50% Complete Milestone**
      * **75% Complete Milestone**
      * **100% Complete Milestone**
+
+---
 
 ## 5. Creating the Task Backlog (All Members)
 
@@ -71,7 +77,9 @@ Before starting, review these three primary workflows used in the industry:
    * Issue #4 is planned for Iteration 2, which corresponds to the **75% Complete Milestone**.
    * Issue #5 is planned for Iteration 3, which corresponds to the **100% Complete Milestone**.
 
-## 4. The GitHub Flow Cycle (Members 2-5)
+---
+
+## 7. The GitHub Flow Cycle (Members 2-5)
 
 Each member must follow these steps for their respective issue. **Member 1** will follow these steps last.
 
@@ -129,13 +137,14 @@ On your terminal:
 git checkout main
 git pull origin main
 git merge --no-ff feature/issue-number-description
+git push origin main
 ```
 
 **Why `--no-ff`?** This option always creates a "merge commit," documenting the integration as a deliberate event in history. This is ideal in academic contexts so that research supervisors can see the branch evolution and your collaborative process. It also enables the lecturer to see the history of changes in a more structured way, which is beneficial for grading and feedback.
 
 ---
 
-## 5. Handling Merge Conflicts (Member 5)
+## 8. Handling Merge Conflicts (Member 5)
 
 By the time **Member 5** merges, the `main` branch will have moved forward significantly. If a conflict occurs:
 
@@ -146,11 +155,34 @@ By the time **Member 5** merges, the `main` branch will have moved forward signi
 
 ---
 
-## 6. Summary of Merging Techniques
+## 9. Summary of Merging Techniques
 
 While we used **Git Merge (`--no-ff`)**, be aware of these alternatives:
 
 * **Git Rebase:** Rewrites history by moving the base of your branch to the tip of `main`. It creates a clean, linear history but reduces traceability.
 * **Squash Commits:** Combines all commits from a feature branch into one single commit on `main`. This is useful for cleaning up "messy" intermediate commits but discards individual commit details.
 
-**Final Check:** Use `git log --oneline --graph` to view the repository history. You should see a series of "knots" representing the deliberate merge commits made by each team member.
+---
+
+## 10. Auditing Repository History (`git log`)
+
+**All Members** should practice viewing the "technical lab notes" of the project to ensure the process is transparent.
+
+* Go back to the main brach: `git checkout main`
+* Then run `git log --oneline --graph` to view the repository history. You should see a series of "knots" representing the deliberate merge commits made by each team member.
+
+* **View a Graph of Merges:** To see how branches have evolved and joined, run:
+
+    ```bash
+    git log --merges
+    ```
+
+    *Note: This provides a quick overview of the branch evolution and is ideal for supervisors to see your collaborative process.*
+
+* **Inspect Recent Changes:** To see the full details of the most recent commit, including the reasoning in the commit body, use:
+
+    ```bash
+    git show HEAD
+    ```
+
+    *Note: The **HEAD** pointer identifies your current location in the repository's history.*
