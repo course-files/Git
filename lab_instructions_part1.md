@@ -12,17 +12,19 @@ Before starting, review these three primary workflows used in the industry:
 * **Git Flow:** A more structured approach with multiple long-lived branches (`main`, `dev`, `release`, `feature`, and `bug`). It is ideal for installable applications (like mobile apps) where multiple versions run simultaneously.
 * **Trunk-Based Development (TBD):** The current industry standard (2026) for large-scale SaaS. It uses direct commits to `main` or very short-lived feature branches (~4 hours) and relies on "feature flags" and bulletproof automated testing.
 
+All team members should clone the repository to their local machines:
+
+**Clone the Repository:** `git clone <repository-url> <destination-folder>`
+
 ---
 
-## 2. Lab Setup (Member 1)
+## 2. Branch Protection and Repository Setup (Member 1)
 
 **Member 1** will act as the "team lead" for this lab.
 
-1. **Clone the Repository:** `git clone <repository-url> <destination-folder>`.
+1. **Confirm that your Team Members are Collaborators:** Go to: **Settings > Collaborators**. You should see all five members listed with "Write" access or "Admin" access.
 
-2. **Confirm that your Team Members are Collaborators:** Go to: **Settings > Collaborators**. You should see all five members listed with "Write" access or "Admin" access.
-
-3. **Configure Branch Protection:**
+2. **Configure Branch Protection:**
     * Go to **Settings > Branches > Add branch ruleset**.
     * Create a rule named `pr-and-1-approval-required-to-merge`.
     * Set the enforcement status to **Active**.
@@ -33,7 +35,7 @@ Before starting, review these three primary workflows used in the industry:
 
 ---
 
-## 3. Create a Project (Member 1)
+## 3. Create a Project (Member 2)
 
 1. Go to the **Projects** tab in the repository and click on **New Project**.
 2. Select the **Iterative development** template and name it "**2026 Business Intelligence Labs**".
@@ -42,7 +44,7 @@ Before starting, review these three primary workflows used in the industry:
 
 ---
 
-## 4. Create Milestones (Member 1)
+## 4. Create Milestones (Member 3)
 
 1. Go to the **Issues** tab and click on **Milestones**.
 2. Create 3 milestones and:
@@ -56,30 +58,49 @@ Before starting, review these three primary workflows used in the industry:
 
 ## 5. Creating the Task Backlog (All Members)
 
-1. Each member must create a "GitHub Issue" to represent a specific technical task.
-2. All the issues should be assigned to the respective member of the team.
-3. All the issues should be assigned the label "**enhancement**".
-4. All the issues should be assigned to the "**2026 Business Intelligence Labs**" project.
+Have a discussion as a team to determine the specific technical tasks that need to be completed for the lab. Each task should be clearly defined and assigned to a specific team member. This is similar to identifying functional and non-functional requirements from the potential end users of a system. Once you have identified the tasks, follow these steps:
 
-* **Member 1:** Issue #1 - 50% Complete Milestone - Title: Add project README with team roles.
-* **Member 2:** Issue #2 - 50% Complete Milestone - Title: Create a `data_source.md` file listing BI source types.
-* **Member 3:** Issue #3 - 50% Complete Milestone - Title: Create a `warehouse_schema.md` describing a Star Schema.
-* **Member 4:** Issue #4 - 75% Complete Milestone - Title: Create a `data_pipeline.md` explaining ETL vs. ELT.
-* **Member 5:** Issue #5 - 100% Complete Milestone - Title: Add a `governance.md` file regarding PII and data auditability.
+1. Each member must create a "GitHub Issue" to represent a specific technical task.
+2. Each issue should be assigned to the respective member of the team.
+3. Each issue should be assigned the label "**enhancement**".
+4. Each issue should be assigned the type "**Feature**".
+5. Each issue should be assigned to the "**2026 Business Intelligence Labs**" project.
+
+Example issues for the lab:
+
+* **Member 1:** Issue #1 - 50% Complete Milestone - Title: feature/lab1/update-project-README. Description: Update the project's README with team roles.
+* **Member 2:** Issue #2 - 50% Complete Milestone - Title: feature/lab1/research-on-data-sources. Description: Create a `data_source.md` file reviewing sources of data in a business.
+* **Member 3:** Issue #3 - 50% Complete Milestone - Title: feature/lab1/research-on-star-schema. Description: Create a `warehouse_schema.md` describing a Star Schema.
+* **Member 4:** Issue #4 - 75% Complete Milestone - Title: feature/lab1/research-on-ETL-ELT-EtLT. Description: Create a `data_pipeline.md` differentiating between ETL, ELT, and EtLT in the context of compliance with the legal requirements in an industry.
+* **Member 5:** Issue #5 - 100% Complete Milestone - Title: feature/lab1/research-on-data-governance. Description: Add a `governance.md` file reviewing data governance and access to PII.
 
 ---
 
-## 6. Assigning Issues to Iterations
+## 6. Assigning Issues to Iterations and Managing the Status of Issues
 
-1. Go to the **Projects** tab and open the "**2026 Business Intelligence Labs**" project. Navigate to the **Status Board** view where you can see all the issues in the backlog.
-2. For each issue, click on the issue card and assign it to the appropriate iteration based on its milestone. Example:
+1. Go to the **Projects** tab and open the "**202604 Business Intelligence Labs**" project. Navigate to the **My items** view where you can see all the issues in the backlog.
+2. For each issue, click on the issue title and assign it to the appropriate iteration based on its milestone. Example:
    * Issues #1, #2, and #3 are planned for Iteration 1, which corresponds to the **50% Complete Milestone**.
    * Issue #4 is planned for Iteration 2, which corresponds to the **75% Complete Milestone**.
    * Issue #5 is planned for Iteration 3, which corresponds to the **100% Complete Milestone**.
 
+You should see the issue under the **"current iteration"** tab of the project listed in the Backlog.
+
+Issues can move across 5 states by default: Backlog, Ready, In Progress, In Review, and Done.
+
+* **Backlog**: The issue is created but not yet started.
+* **Ready**: The issue is ready to be worked on but has not been started yet.
+* **In Progress**: The issue is currently being worked on.
+* **In Review**: The issue has been worked on and is being reviewed by others, i.e., there is a code review before the Pull Request is approved and merged.
+* **Done**: The issue has been completed, approved, and merged into the main branch through the Pull Request process.
+
+The team members should have daily brief meetings to discuss the status of their assigned issues and update the status accordingly in the project board. This helps in tracking the progress of each task and ensures that everyone is on the same page regarding the project's timeline and deliverables.
+
+Such meetings are similar to "stand-up meetings" in agile development, where team members quickly share updates on their work, any blockers they are facing, and their plans for the day. This promotes transparency and collaboration within the team. It helps you to avoid surprises a few hours to the deadline.
+
 ---
 
-## 7. The GitHub Flow Cycle (Members 2-5)
+## 7. The GitHub Flow Cycle
 
 Each member must follow these steps for their respective issue. **Member 1** will follow these steps last.
 
@@ -87,10 +108,10 @@ Each member must follow these steps for their respective issue. **Member 1** wil
 
 On your local machine, create and switch to a new branch for your task.
 
-*Note: The branch name should follow the format `feature/issue-number-description` to maintain clarity and consistency across the team. For example, if you are working on Issue #2, your branch name could be `feature/issue-2-data-source`. This naming convention helps everyone on the team quickly understand the purpose of the branch and its connection to the corresponding issue.*
+*Note: The branch name should follow the format `feature/lab-number/description` to maintain clarity and consistency across the team. For example, if you are working on an Issue in Lab 3, then your branch name could be `feature/lab-3/data-source`. This naming convention helps everyone in the team quickly understand the purpose of the branch and its connection to the corresponding lab.*
 
 ```bash
-git checkout -b feature/issue-number-description
+git checkout -b feature/lab-number/description
 ```
 
 *Note: A branch is an independent line of development used for team governance*.
@@ -116,9 +137,10 @@ git add .
 git commit
 ```
 
-**Important:** What constitutes an academically sound commit message?
+**Important:** What constitutes an **academically sound** commit message?
 
 A commit message is a permanent, public record of **why** a change was made — not merely what changed (the diff already shows that). In an academic context, it serves the same function as a lab notebook entry: it must be comprehensible to a reader who has no prior context and who may be reviewing the work weeks later.
+
 Your `git commit` command (without the `-m` flag) will open a text editor. Structure your message as follows:
 
 ```text
@@ -134,7 +156,7 @@ What would happen without this change?>
 Related issue: #<issue-number>
 ```
 
-Why the **imperative mood**? Git itself uses it — "Merge branch", "Revert commit", "Add file". Reading your message alongside Git's own messages should feel consistent. Write "Add feature" rather than "Added feature" or "Adding feature".
+Why the **imperative mood**? Git itself uses it — "Merge branch", "Revert commit", "Add file". Reading your message alongside Git's own messages should feel consistent. Write "Add feature" rather than "*Added* feature" or "*Adding* feature".
 
 Example:
 
@@ -143,9 +165,11 @@ Add data_source.md listing primary BI source types
 
 This file documents the four primary data source categories used
 in Business Intelligence architectures: transactional databases,
-flat files, APIs, and streaming sources. It provides the foundational
-vocabulary required before students can assess warehouse design in
-subsequent tasks.
+flat files, APIs, and streaming sources from various departments.
+
+It is important to understand these categories as they inform the
+design of data pipelines and the choice of tools for extraction
+and transformation.
 
 Related issue: #2
 ```
@@ -155,24 +179,26 @@ Related issue: #2
 Push your branch to GitHub:
 
 ```bash
-git push origin feature/issue-number-description
+git push origin feature/lab-number/description
 ```
 
-1. Go to GitHub and open a **Pull Request (PR)** from your branch to `main`. There should be a green button prompting you to "Compare & pull request" after pushing.
-2. Link the PR to the corresponding issue by including `#issue-number` in the PR description. This creates a connection between the changes and the issue it addresses.
-3. Assign a teammate to perform a **Code Review**. If this was your research/project, then your research supervisor would be the reviewer.
+1. Go to GitHub (the website) and open a **Pull Request (PR)** from your branch to `main`. There should be a green button prompting you to "Compare & pull request" after pushing. If not, then you can navigate to the "**Pull requests**" tab and click on "New pull request" to select your branch and create the PR.
+2. Name the PR appropriately, e.g., "*Merge feature/lab1/update-project-readme into main*" and add a detailed description of the changes made. This description should provide context for the reviewer, explaining the motivation behind the changes and any relevant details that would help them understand the purpose of the PR.
+3. Link the PR to the corresponding issue by including `#issue-number` in the PR description. This creates a connection between the changes and the issue it addresses. A common way to include the issue number is to use the text "`Closes #issue-number`" in the PR description, e.g., "`Closes #2`". This not only links the PR to the issue but also automatically closes the issue when the PR is merged.
+4. Assign a teammate to perform a **Code Review**. If this was your research/project, then your research supervisor would be the assigned reviewer. The author of the PR should not merge their own PR. This is a critical aspect of team governance and ensures that all changes are reviewed by at least one other team member before being integrated into the main branch.
+5. The assignees can be anyone who contributed to the commits in the branch, the label can be "**enhancement**" for a new feature, the projects should be the 202604 Business Intelligence Labs, and the milestone should correspond to the one assigned to the issue that the feature branch addresses.
 
 ### Step D: The Code Review
 
 * **The Reviewer:** Check the **Files changed** for clarity and accuracy based on the source material. Approve the PR if it meets requirements. If not, request changes and provide specific feedback in the comments.
-* **The Author:** Address any feedback provided during the review.
+* **The Author:** Address any feedback provided during the review. If it is approved, then the author can proceed to merge the PR. If changes are requested, make the necessary updates and push them to the same branch. The PR will automatically update with the new commits, and the reviewer can re-review until it is approved.
 
-### Step E: Merging without Fast-Forward (`--no-ff`)
+### Step E: Merging **WITHOUT** Fast-Forward (`--no-ff`)
 
 Once approved, the merge must be performed. To ensure the process is visible for audit purposes, we will avoid "Fast-Forward" merging. Click the green "Merge pull request" on the GitHub web interface, then select "Create a merge commit" to ensure that the merge is explicitly recorded in the history. This should achieve the same result as running the following command in the terminal:
 
 ```bash
-git merge --no-ff feature/issue-number-description
+git merge --no-ff feature/lab-number/description
 ```
 
 After successfully merging the pull request in the web browser, team members should pull the latest changes to their local `main` branch to stay up to date:
@@ -186,17 +212,19 @@ git pull origin main
 
 ---
 
-## 8. Handling Merge Conflicts (Member 1 and 5)
+## 8. Handling Merge Conflicts (Member 4 and 5)
 
-A merge conflict occurs when two branches have each made different changes to the same lines of the same file. Git cannot decide which version is correct, so it pauses and asks you to resolve it manually. This section engineers a guaranteed conflict so that every team member experiences the resolution process.
+A merge conflict occurs when two branches have each made different changes to the **same lines** in **the same file**. Git cannot decide which version is correct, so it pauses and asks you to resolve it manually.
 
-**Setup** — creating the conflict (Members 1 and 5, working simultaneously).
+This section engineers a guaranteed conflict so that every team member experiences the resolution process.
+
+**Setup** — creating the conflict (Members 4 and 5, working simultaneously).
 
 Both members must edit the same line in README.md before either has merged.
-Member 1 adds the following line to README.md on their feature branch and commits it:
+Member 4 adds the following line to README.md on their feature branch and commits it:
 
 ```bash
-echo "Project lead: Member 1 — responsible for overall coordination." >> README.md
+echo "Project lead: Member 4 — responsible for overall coordination." >> README.md
 git add README.md
 git commit -m "Add project lead attribution to README"
 ```
@@ -209,14 +237,16 @@ git add README.md
 git commit -m "Add governance author attribution to README"
 ```
 
-Member 1 merges first through the normal PR process. By the time Member 5 attempts to merge, main has moved forward and the two branches have diverged on the same line.
+Member 4 merges first through the normal PR process. By the time Member 5 attempts to merge, main has moved forward and the two branches have diverged on the same line.
 
 ### Resolution process (Member 5)
 
-Before opening a PR, Member 5 should update their local feature branch with the latest state of main:
+**Important:** The standard practice **before opening any PR** is to update your feature branch with the latest changes from main. This is where conflicts are detected.
+
+Before opening a PR, Member 5 updates their local feature branch with the latest state of main:
 
 ```bash
-git checkout feature/issue-5-governance
+git checkout feature/lab-number/description # Checkout the corresponding feature based on the name you used for the branch
 git fetch origin
 git merge origin/main
 ```
@@ -234,16 +264,18 @@ Open README.md in your IDE (VS Code). Git marks the conflict zone as follows:
 <<<<<<< HEAD
 Project lead: Member 5 — responsible for governance and audit.
 =======
-Project lead: Member 1 — responsible for overall coordination.
+Project lead: Member 4 — responsible for overall coordination.
 >>>>>>> origin/main
 ```
 
 The section between **<<<<<<< HEAD** and **=======** is your version
 
-The section between **=======** and **>>>>>>> origin/main** is the version already on main. Member 5 must decide what the final file should say. In this case, both attributions are valid — combine them as follows:
+The section between **=======** and **>>>>>>> origin/main** is the version already in main.
+
+Member 5 must decide what the final file should say. In this case, both attributions are valid — combine them as follows:
 
 ```text
-Project lead: Member 1 (coordination) and Member 5 (governance and audit).
+Project lead: Member 4 (coordination) and Member 5 (governance and audit).
 ```
 
 Delete all three conflict markers (<<<<<<<, =======, >>>>>>>) and save the file.
