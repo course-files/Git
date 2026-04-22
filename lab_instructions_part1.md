@@ -38,7 +38,7 @@ All team members should clone the repository to their local machines:
 ## 3. Create a Project (Member 2)
 
 1. Go to the **Projects** tab in the repository and click on **New Project**.
-2. Select the **Iterative development** template and name it "**202604 Business Intelligence Labs**".
+2. Select the **Iterative development** template and name it "**[GROUP NAME] Business Intelligence Labs**".
 3. Ensure that your team members are added to the project as collaborators with **Admin** rights. This can be done in the project **Settings** > **Manage access**.
 4. Create iterations and specify the start and end dates for each iteration. This is available under the project **Settings** > **Iterations**.
 
@@ -64,7 +64,7 @@ Have a discussion as a team to determine the specific technical tasks that need 
 2. Each issue should be assigned to the respective member of the team.
 3. Each issue should be assigned the label "**enhancement**".
 4. Each issue should be assigned the type "**Feature**".
-5. Each issue should be assigned to the "**202604 Business Intelligence Labs**" project.
+5. Each issue should be assigned to the "**[GROUP NAME] Business Intelligence Labs**" project.
 
 Example issues for the lab:
 
@@ -78,7 +78,7 @@ Example issues for the lab:
 
 ## 6. Assigning Issues to Iterations and Managing the Status of Issues
 
-1. Go to the **Projects** tab and open the "**202604 Business Intelligence Labs**" project. Navigate to the **My items** view where you can see all the issues in the backlog.
+1. Go to the **Projects** tab and open the "**[GROUP NAME] Business Intelligence Labs**" project. Navigate to the **My items** view where you can see all the issues in the backlog.
 2. For each issue, click on the issue title and assign it to the appropriate iteration based on its milestone. Example:
    * Issues #1, #2, and #3 are planned for Iteration 1, which corresponds to the **50% Complete Milestone**.
    * Issue #4 is planned for Iteration 2, which corresponds to the **75% Complete Milestone**.
@@ -186,7 +186,7 @@ git push origin feature/lab-number/description
 2. Name the PR appropriately, e.g., "*Merge feature/lab-1/update-project-readme into main*" and add a detailed description of the changes made. This description should provide context for the reviewer, explaining the motivation behind the changes and any relevant details that would help them understand the purpose of the PR.
 3. Link the PR to the corresponding issue by including `#issue-number` in the PR description. This creates a connection between the changes and the issue it addresses. A common way to include the issue number is to use the text "`Closes #issue-number`" in the PR description, e.g., "`Closes #2`". This not only links the PR to the issue but also automatically closes the issue when the PR is merged.
 4. Assign a teammate to perform a **Code Review**. If this was your research/project, then your research supervisor would be the assigned reviewer. The author of the PR should not merge their own PR. This is a critical aspect of team governance and ensures that all changes are reviewed by at least one other team member before being integrated into the main branch.
-5. The assignees can be anyone who contributed to the commits in the branch, the label can be "**enhancement**" for a new feature, the projects should be the 202604 Business Intelligence Labs, and the milestone should correspond to the one assigned to the issue that the feature branch addresses.
+5. The assignees can be anyone who contributed to the commits in the branch, the label can be "**enhancement**" for a new feature, the project should be the **[GROUP NAME] Business Intelligence Labs**, and the milestone should correspond to the one assigned to the issue that the feature branch addresses.
 
 ### Step D: The Code Review
 
