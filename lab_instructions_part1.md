@@ -38,7 +38,7 @@ All team members should clone the repository to their local machines:
 ## 3. Create a Project (Member 2)
 
 1. Go to the **Projects** tab in the repository and click on **New Project**.
-2. Select the **Iterative development** template and name it "**202604 Business Intelligence Labs**".
+2. Select the **Iterative development** template and name it "**[GROUP NAME] Business Intelligence Labs**".
 3. Ensure that your team members are added to the project as collaborators with **Admin** rights. This can be done in the project **Settings** > **Manage access**.
 4. Create iterations and specify the start and end dates for each iteration. This is available under the project **Settings** > **Iterations**.
 
