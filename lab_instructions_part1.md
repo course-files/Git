@@ -241,9 +241,11 @@ Member 4 merges first through the normal PR process. By the time Member 5 attemp
 
 ### Resolution process (Member 5)
 
-**IMPORTANT:** The standard practice **before opening any PR** is to update your feature branch with the latest changes from main. This is where conflicts are detected.
+#### Option 1
 
-Before opening a PR, Member 5 updates their local feature branch with the latest state of main:
+**IMPORTANT:** The standard practice **before opening any PR** is to update your feature branch with the latest changes from main. This is one of the places where conflicts can be detected.
+
+Before opening a PR to merge `feature/lab-number/description` into `main`, Member 5 updates their local feature branch with the latest state of main:
 
 ```bash
 git checkout feature/lab-number/description
@@ -258,7 +260,7 @@ CONFLICT (content): Merge conflict in README.md
 Automatic merge failed; fix conflicts then commit the result.
 ```
 
-Open README.md in your IDE (VS Code). Git marks the conflict zone as follows:
+Open the file with the merge conflict (README.md in this case) in your IDE (VS Code). Git marks the conflict zone as follows:
 
 ```text
 <<<<<<< HEAD
@@ -272,6 +274,24 @@ The section between **<<<<<<< HEAD** and **=======** is your version
 
 The section between **=======** and **>>>>>>> origin/main** is the version already in main.
 
+---
+
+#### Option 2
+
+Member 5 can proceed to push the changes to their branch and then open the PR without updating their local branch with the changes in main.
+
+To open a PR without updating the branch with changes from main:
+
+```bash
+git push origin feature/lab-number/description
+```
+
+When they attempt to merge, GitHub will detect the conflict and prevent the merge until the conflict is resolved. The process of resolving the conflict in the web interface in the origin (on [GitHub.com](https://github.com)) is similar to the local resolution process described below, but it may be more cumbersome for complex conflicts with multiple merge conflicts at a time.
+
+**The 'GitHub Flow' recommends not having your branches opened for too long because it increases the chances of you changing the same lines as other team members, which leads to conflicts.**
+
+---
+
 Member 5 must decide what the final file should say. In this case, both attributions are valid — combine them as follows:
 
 ```text
@@ -280,14 +300,20 @@ Project lead: Member 4 (coordination) and Member 5 (governance and audit).
 
 Delete all three conflict markers (<<<<<<<, =======, >>>>>>>) and save the file.
 
-Stage the resolved file and complete the merge:
+**If you were using Option 1**, stage the resolved file and complete the merge:
 
 ```bash
 git add README.md
 git commit -m "Resolve merge conflict: consolidate dual attribution in README"
 ```
 
+**If you were using Option 2**, click the "Resolve conflicts" button in the GitHub web interface, edit the file to resolve the conflict as described above, and then commit the resolution directly in the web interface.
+
+---
+
 Member 5's branch now contains a clean merge commit. Proceed to push and open your PR as normal.
+
+---
 
 **Key principle:** A conflict is not an error — it is Git asking a human to make a decision that a machine cannot. The discipline lies in reading both versions carefully before choosing, not in simply accepting one side and discarding the other.
 
