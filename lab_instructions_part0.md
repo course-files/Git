@@ -87,7 +87,7 @@ security.
 ## Step 2: Add the PUBLIC (.pub) Key to Your GitHub Account
 
 Log in to your GitHub account, navigate to "Settings" > "SSH and GPG keys" >
-"New SSH key". Paste **all the contents** of your public key file
+"New SSH key" ([https://github.com/settings/keys](https://github.com/settings/keys)). Paste **all the contents** of your public key file
 (`~/.ssh/id_ed25519_auth_and_sign.pub`) into the "Key" field and select
 "Authentication Key" as the type.
 
