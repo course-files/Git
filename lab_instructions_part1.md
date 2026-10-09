@@ -1,4 +1,4 @@
-# Collaborative Git Workflows: SSH Key Generation for GitHub
+# Collaborative Git Workflows: Part 1 — SSH Key Generation for GitHub
 
 An SSH key pair consists of a private key and a public key. The private key
 should be kept secure in your local machine, while the public key will be

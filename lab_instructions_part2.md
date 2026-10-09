@@ -1,4 +1,4 @@
-# Collaborative Git Workflows: Part 1
+# Collaborative Git Workflows: Part 2
 
 This lab is designed for a team of five members to practice **GitHub Flow** while understanding alternative Git workflows. You will focus on **team governance**, **branch protection**, and **explicit merging** without fast-forwarding to maintain a clear audit trail.
 
@@ -22,7 +22,7 @@ All team members should clone the repository to their local machines:
 
 **Member 1** will act as the "team lead" for this lab.
 
-1. **Confirm that your Team Members are Collaborators:** Go to: **Settings > Collaborators**. You should see all five members listed with "Write" access or "Admin" access.
+1. **Confirm that your Team Members are Collaborators:** Go to: **Settings > Collaborators**. You should see all five members listed with "Admin" access. If not, add them manually.
 
 2. **Configure Branch Protection:**
     * Go to **Settings > Branches > Add branch ruleset**.
@@ -183,7 +183,7 @@ git push origin feature/lab-number/description
 ```
 
 1. Go to GitHub (the website) and open a **Pull Request (PR)** from your branch to `main`. There should be a green button prompting you to "Compare & pull request" after pushing. If not, then you can navigate to the "**Pull requests**" tab and click on "New pull request" to select your branch and create the PR.
-2. Name the PR appropriately, e.g., "*Merge feature/lab-1/update-project-readme into main*" and add a detailed description of the changes made. This description should provide context for the reviewer, explaining the motivation behind the changes and any relevant details that would help them understand the purpose of the PR.
+2. Name the PR appropriately and add a detailed description of the changes made. This description should provide context for the reviewer, explaining the motivation behind the changes and any relevant details that would help them understand the purpose of the PR.
 3. Link the PR to the corresponding issue by including `#issue-number` in the PR description. This creates a connection between the changes and the issue it addresses. A common way to include the issue number is to use the text "`Closes #issue-number`" in the PR description, e.g., "`Closes #2`". This not only links the PR to the issue but also automatically closes the issue when the PR is merged.
 4. Assign a teammate to perform a **Code Review**. If this was your research/project, then your research supervisor would be the assigned reviewer. The author of the PR should not merge their own PR. This is a critical aspect of team governance and ensures that all changes are reviewed by at least one other team member before being integrated into the main branch.
 5. The assignees can be anyone who contributed to the commits in the branch, the label can be "**enhancement**" for a new feature, the project should be the **[GROUP NAME] Business Intelligence Labs**, and the milestone should correspond to the one assigned to the issue that the feature branch addresses.
@@ -286,9 +286,9 @@ To open a PR without updating the branch with changes from main:
 git push origin feature/lab-number/description
 ```
 
-When they attempt to merge, GitHub will detect the conflict and prevent the merge until the conflict is resolved. The process of resolving the conflict in the web interface in the origin (on [GitHub.com](https://github.com)) is similar to the local resolution process described below, but it may be more cumbersome for complex conflicts with multiple merge conflicts at a time.
+When they attempt to merge, GitHub will detect the conflict and prevent the merge until the conflict is resolved. The process of resolving the conflict in the web interface in the origin (on [GitHub.com](https://github.com)) is similar to the local resolution process, but it may be more cumbersome for complex conflicts with multiple merge conflicts at a time.
 
-**The 'GitHub Flow' recommends not having your branches opened for too long because it increases the chances of you changing the same lines as other team members, which leads to conflicts.**
+**The 'GitHub Flow' recommends not having your branches opened for too long because it increases the chances of you changing the same lines that other team members have already changed. And this leads to conflicts.**
 
 ---
 
