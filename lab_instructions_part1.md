@@ -85,6 +85,8 @@ Installing the GitHub CLI in Windows (run in PowerShell):
 winget install --id GitHub.cli
 ```
 
+If winget is not installed, you can bypass it and download and install GitHub CLI from here: [https://github.com/cli/cli/releases/latest](https://github.com/cli/cli/releases/latest)
+
 After installation, **close and reopen** your terminal (Git Bash or
 PowerShell) so that the `gh` command is recognized.
 
