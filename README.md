@@ -25,9 +25,9 @@
 ├── assets
 │   └── images
 │       └── UseSSH_notHTTPS.png
-├── lab_instructions_part0.md
 ├── lab_instructions_part1.md
-└── lab_instructions_part2.md
+├── lab_instructions_part2.md
+└── lab_instructions_part3.md
 
 3 directories, 7 files
 ```
