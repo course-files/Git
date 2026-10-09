@@ -244,6 +244,12 @@ Then add the private key to the SSH agent:
 ssh-add ~/.ssh/id_ed25519_auth_and_sign
 ```
 
+You can then confirm which SSH key is being used for signing commits:
+
+```bash
+git config --show-origin --get-regexp "gpg\.format|user\.signingkey|commit\.gpgsign"
+```
+
 ## Step 4: Test the SSH Connection to GitHub
 
 To verify that your SSH key is correctly set up and can authenticate with GitHub, run the following command:
