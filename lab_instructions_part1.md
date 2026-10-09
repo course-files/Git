@@ -127,7 +127,7 @@ gh --version
 
 ### Log in to GitHub
 
-Execute:
+Switch to using Git Bash **only** if you are using Windows or the default Terminal if you are using Linux/MacOs from this point onwards. Execute:
 
 ```bash
 gh auth login
@@ -230,7 +230,7 @@ First confirm that the SSH agent is running:
 eval "$(ssh-agent -s)"
 ```
 
-On Windows, if this command fails, ensure that the OpenSSH Authentication Agent service is running via Services.
+On Windows, if this command fails, confirm that the OpenSSH Authentication Agent service is running via `services.msc`.
 
 ```bash
 git config --global gpg.format ssh
@@ -304,6 +304,9 @@ The syntax is:
 
 ```bash
 git@github.com:<username>/<repository>.git <name-of-repository-in-your-local-machine>
+
+# If you do not provide a value for <name-of-repository-in-your-local-machine>
+# then it will use the name of the repository as the folder name by default.
 ```
 
-This setup enhances the security of your interactions with GitHub while also providing a convenient way to manage your Git operations.
+This setup enhances the security of your interactions with GitHub.
