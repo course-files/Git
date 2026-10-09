@@ -87,9 +87,6 @@ winget install --id GitHub.cli
 
 If winget is not installed, you can bypass it and download and install GitHub CLI from here: [https://github.com/cli/cli/releases/latest](https://github.com/cli/cli/releases/latest)
 
-After installation, **close and reopen** your terminal (Git Bash or
-PowerShell) so that the `gh` command is recognized.
-
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg" width="40"/>
 
 Installing the GitHub CLI in macOS (requires [Homebrew](https://brew.sh/)):
@@ -118,6 +115,9 @@ repository is often outdated:
 
 For other operating systems, see the
 [official installation instructions](https://github.com/cli/cli#installation).
+
+After installation, **close and reopen** your terminal (Git Bash or
+PowerShell) so that the `gh` command is recognized.
 
 Verify installation:
 
