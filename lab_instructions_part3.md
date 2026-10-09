@@ -34,6 +34,24 @@ To show which branch you are currently on, use:
 git status
 ```
 
+To delete a local branch:
+
+```bash
+git branch -d <branch-name>
+```
+
+To force delete a local branch that has unmerged changes:
+
+```bash
+git branch -D <branch-name>
+```
+
+To delete a remote branch:
+
+```bash
+git push origin --delete <branch-name>
+```
+
 1. **The Simulated Mistake:** Commit an update in the wrong branch.
 2. **Get the ID:** Find the **Commit ID (SHA value)** of the misplaced commit in the wrong feature branch.
     * Note that you need to be in the branch that contains the misplaced commit first: `git checkout feature/lab-number/description-of-wrong-branch`
@@ -89,7 +107,7 @@ Use this **only for commits that have not been pushed** to GitHub.
 * Use `--hard` only when you are certain you want to discard the changes entirely.
 * If you accidentally use `--hard`, `git reflog` can often recover the commit within approximately **30 days** on your local machine.
 
-The accidental commit should no longer appear. **This is safe only because the commit was never pushed to GitHub**. Had you pushed it, `--hard` would still remove it locally, but the commit would persist in origin and reappear the next time you execute `git pull`. In that case, you would need git revert instead (see the next Section).
+The accidental commit should no longer appear. **This is safe only because the commit was never pushed to GitHub**. Had you pushed it, `--hard` would still remove it locally, but the commit would persist in origin and reappear the next time you execute `git fetch origin` followed by `git merge origin/main` or the next time you execute `git pull`. In that case, you would need git revert instead (see the next Section).
 
 ### B. Shared Undo (`git revert`)
 
@@ -98,7 +116,7 @@ Use this for **shared, remote branches** to ensure you do not rewrite history th
 * **Member 4:** If an error is discovered in a file already merged into `main`, do not delete it. Instead, create an "undo" commit:
 
     ```bash
-    git revert <Commit-ID-to-undo>
+    git revert <commit-ID-to-undo>
     git push origin
     ```
 

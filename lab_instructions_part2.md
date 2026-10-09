@@ -205,10 +205,19 @@ After successfully merging the pull request in the web browser, team members sho
 
 ```bash
 git checkout main
-git pull origin main
+git fetch origin
+git merge origin/main
 ```
 
 **Why `--no-ff`?** This option always creates a "merge commit," documenting the integration as a deliberate event in history. This is ideal in academic contexts so that research supervisors can see the branch evolution and your collaborative process. It also enables the lecturer to see the history of changes in a more structured way, which is beneficial for grading and feedback.
+
+Set it as the default by executing the following command:
+
+```bash
+git config --global merge.ff false
+```
+
+This makes every `git merge` use the `--no-ff` option by default, ensuring that all merges create a merge commit and the history remains explicit.
 
 ---
 
@@ -337,7 +346,13 @@ While we used **Git Merge (`--no-ff`)**, be aware of these alternatives:
 **All Members** should practice viewing the "technical lab notes" of the project to ensure the process is transparent.
 
 * Go back to the main branch: `git checkout main`
-* Fetch the latest changes: `git pull origin main`
+* Fetch the latest changes:  
+
+  ```bash
+  git fetch origin
+  git merge origin/main
+  ```
+
 * Confirm that the remote branch is up to date with the branch in the origin by running `git status`
 * Then run `git log --oneline --graph` to view the repository history. You should see a series of "knots" representing the deliberate merge commits made by each team member.
 
