@@ -108,10 +108,10 @@ Each member must follow these steps for their respective issue. **Member 1** wil
 
 On your local machine, create and switch to a new branch for your task.
 
-*Note: The branch name should follow the format `feature/lab-number/description` to maintain clarity and consistency across the team. For example, if you are working on an Issue in Lab 3, then your branch name could be `feature/lab-3/data-source`. This naming convention helps everyone in the team quickly understand the purpose of the branch and its connection to the corresponding lab.*
+*Note: The branch name should follow the format `feature/lab-initials/description` to maintain clarity and consistency across the team. For example, if you are working on an Issue in Lab 3, then your branch name could be `feature/lab-3/data-source`. This naming convention helps everyone in the team quickly understand the purpose of the branch and its connection to the corresponding lab.*
 
 ```bash
-git checkout -b feature/lab-number/description
+git checkout -b feature/lab-initials/description
 ```
 
 *Note: A branch is an independent line of development used for team governance*.
@@ -179,7 +179,7 @@ Related issue: #2
 Push your branch to GitHub:
 
 ```bash
-git push origin feature/lab-number/description
+git push origin feature/lab-initials/description
 ```
 
 1. Go to GitHub (the website) and open a **Pull Request (PR)** from your branch to `main`. There should be a green button prompting you to "Compare & pull request" after pushing. If not, then you can navigate to the "**Pull requests**" tab and click on "New pull request" to select your branch and create the PR.
@@ -198,7 +198,7 @@ git push origin feature/lab-number/description
 Once approved, the merge must be performed. To ensure the process is visible for audit purposes, we will avoid "Fast-Forward" merging. Click the green "Merge pull request" on the GitHub web interface, then select "Create a merge commit" to ensure that the merge is explicitly recorded in the history. This should achieve the same result as running the following command in the terminal:
 
 ```bash
-git merge --no-ff feature/lab-number/description
+git merge --no-ff feature/lab-initials/description
 ```
 
 After successfully merging the pull request in the web browser, team members should pull the latest changes to their local `main` branch to stay up to date:
@@ -254,10 +254,10 @@ Member 4 merges first through the normal PR process. By the time Member 5 attemp
 
 **IMPORTANT:** The standard practice **before opening any PR** is to update your feature branch with the latest changes from main. This is one of the places where conflicts can be detected.
 
-Before opening a PR to merge `feature/lab-number/description` into `main`, Member 5 updates their local feature branch with the latest state of main:
+Before opening a PR to merge `feature/lab-initials/description` into `main`, Member 5 updates their local feature branch with the latest state of main:
 
 ```bash
-git checkout feature/lab-number/description
+git checkout feature/lab-initials/description
 git fetch origin
 git merge origin/main
 ```
@@ -292,7 +292,7 @@ Member 5 can proceed to push the changes to their branch and then open the PR wi
 To open a PR without updating the branch with changes from main:
 
 ```bash
-git push origin feature/lab-number/description
+git push origin feature/lab-initials/description
 ```
 
 When they attempt to merge, GitHub will detect the conflict and prevent the merge until the conflict is resolved. The process of resolving the conflict in the web interface in the origin (on [GitHub.com](https://github.com)) is similar to the local resolution process, but it may be more cumbersome for complex conflicts with multiple merge conflicts at a time.
